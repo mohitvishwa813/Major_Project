@@ -3,6 +3,8 @@ const express = require("express");
 const router = express.Router();
 const User = require("../Models/User");
 const Organizer = require("../Models/EventOrganizer.js");
+const jwt = require("jsonwebtoken");
+
 //registration
 router.post("/register", async (req, res) => {
   const { name, email, password, role } = req.body;
@@ -36,39 +38,64 @@ router.post("/register", async (req, res) => {
 //login
 
 router.post("/login", async (req, res) => {
-  const { email, password ,role} = req.body;
+  const { email, password, role } = req.body;
 
-if(role=='user'){
+  if (role == "user") {
+    //check in user collection
 
-  //check in user collection
-
-  const user = await User.findOne({
-    email,
-    password,
-  });
-  if (!user) {
-    return res.status(401).json({ message: "Invalid email or password" });
+    const user = await User.findOne({
+      email,
+      password,
+    });
+    if (!user) {
+      return res.status(401).json({ message: "Invalid email or password" });
     }
-  res.json({ message: "Login successful as user", user });
+    //generate authorization token
+    const token = jwt.sign({ userId: user._id, role: user.role }, "mohitttt", {
+      expiresIn: "1h",
+    });
+    res.setHeader("Authorization", `Bearer ${token}`);
 
-}
-
-else if(role=="organizer"){
-
+    res.json({ message: "Login successful as user", user, token });
+  } else if (role == "organizer") {
     const organizer = await Organizer.findOne({
       email,
       password,
     });
     if (!organizer) {
       return res.status(401).json({ message: "Invalid email or password" });
+    }
+
+    //generate authorization token
+    const token = jwt.sign(
+      { userId: organizer._id, role: organizer.role },
+      "mohitttt",
+      {
+        expiresIn: "1h",
       }
-    res.json({ message: "Login successful as organizer", organizer });
-  
-}
-else{
-  return res.status(401).json({ message: "Invalid credentials" });
-}
- 
+    );
+    res.setHeader("Authorization", `Bearer ${token}`);
+    res.json({ message: "Login successful as organizer", organizer, token });
+  } else {
+    return res.status(401).json({ message: "Invalid credentials" });
+  }
 });
+
+// Middleware to verify JWT and extract user role
+// const authenticateJWT = (req, res, next) => {
+//   const token = req.headers["authorization"]?.split(" ")[1];
+
+//   if (!token) {
+//     return res.sendStatus(403); // Forbidden
+//   }
+
+//   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+//     if (err) {
+//       return res.sendStatus(403); // Forbidden
+//     }
+//     req.user = user; // Attach user information to request
+//     next();
+//   });
+// };
 
 module.exports = router;
