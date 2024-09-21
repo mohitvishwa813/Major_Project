@@ -7,6 +7,7 @@ const AddServiceSchema = new mongoose.Schema({
   image: { type: String },
   category: { type: String },
   location: { type: String },
+  userId: { type: mongoose.Schema.Types.ObjectId, required: true }, // Add this line
 });
 //create model
 const AddService = mongoose.model("Addservice", AddServiceSchema);
