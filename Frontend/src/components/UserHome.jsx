@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
 import CategorySection from "./CategorySection";
 import CatryCards from "./CatryCards";
+import Services from "./Services";
 
 const UserHome = () => {
   return (
@@ -14,9 +15,13 @@ const UserHome = () => {
         <div className="flex mx-auto w-[90%]  h-[550px] mt-10 ">
           <HeroSection />
         </div>
-        <div className=" mx-auto w-[90%]  h-fit mt-10 ">
+        <div className=" mx-auto w-[90%]  h-fit mt-1">
           <CategorySection />
           <CatryCards/>
+          <div  className=" mx-auto w-[90%] flex  h-fit mt-12 justify-center text-[40px] ">
+            <p className="drop-shadow-md">  Our Services</p>
+          </div>
+          <Services/>
         </div>
       </div>
     </>

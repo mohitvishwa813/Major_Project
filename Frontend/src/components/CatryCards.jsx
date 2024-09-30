@@ -2,7 +2,7 @@ import React from "react";
 
 const CatryCards = () => {
   return (
-    <div className="w-[90%] h-full mt-20 mx-auto">
+    <div className="w-[90%] h-full mt-20 mx-auto  bg-[#f0fef9] p-4">
       <div className="flex w-full h-full justify-between rounded-[1rem] ">
         <div className="w-[56%] h-[330px] rounded-[1rem] border border-gray-300">
           <img
