@@ -56,7 +56,7 @@ router.post("/login", async (req, res) => {
     });
     res.setHeader("Authorization", `Bearer ${token}`);
 
-    res.json({ message: "Login successful as user", user, token });
+    res.json({ message: "Login successful as user", user, token });//send token in response
   } else if (role == "organizer") {
     const organizer = await Organizer.findOne({
       email,
@@ -80,22 +80,5 @@ router.post("/login", async (req, res) => {
     return res.status(401).json({ message: "Invalid credentials" });
   }
 });
-
-// Middleware to verify JWT and extract user role
-// const authenticateJWT = (req, res, next) => {
-//   const token = req.headers["authorization"]?.split(" ")[1];
-
-//   if (!token) {
-//     return res.sendStatus(403); // Forbidden
-//   }
-
-//   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-//     if (err) {
-//       return res.sendStatus(403); // Forbidden
-//     }
-//     req.user = user; // Attach user information to request
-//     next();
-//   });
-// };
 
 module.exports = router;

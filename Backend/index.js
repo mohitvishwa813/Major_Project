@@ -9,7 +9,7 @@ require("dotenv").config();
 
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 // Connect to MongoDBtele
 // const uri = "mongodb://127.0.0.1:27017/Major";
 const uri =
@@ -24,7 +24,6 @@ mongoose
   .catch((err) => console.log("Database connectio eror", err));
 
 //  route
-
 
 app.use("/api/users", userRoutes);
 //for orgainzer to list services

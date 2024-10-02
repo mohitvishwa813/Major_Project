@@ -55,7 +55,7 @@ export default function AuthForm() {
         loginFormData
       );
       const userData = response.data;
-      console.log(userData);
+      console.log(">>", userData);
 
       // Check if the user is an organizer
       if (userData.organizer && userData.organizer.role === "organizer") {
@@ -70,7 +70,7 @@ export default function AuthForm() {
       alert(userData.message);
     } catch (error) {
       console.error("Login failed:", error);
-      alert("An error occurred during login. Please try again.");
+      alert(" Invalid Login Credentials");
     }
   };
   // const handleUserTypeChange = (event) => {
@@ -78,130 +78,128 @@ export default function AuthForm() {
   // };
   return (
     <>
-   
-        <div className="container">
-          <div className=" w-[550px] h-[650px] borde bg-[#7aad92]  flex justify-center items-center "></div>
-          <div className=" w-[550px] h-[650px] bg-[#dddfde] flex justify-center items-center ">
-            <div className="form-container shadow-2xl  ">
-              <div className="form-toggle">
-                <button
-                  className={isLogin ? "active" : ""}
-                  onClick={() => setIsLogin(true)}
-                >
-                  Login
-                </button>
-                <button
-                  className={!isLogin ? "active" : ""}
-                  onClick={() => setIsLogin(false)}
-                >
-                  Register
-                </button>
-              </div>
-              {isLogin ? (
-                <>
-                  <form className="form" onSubmit={handleLogin}>
-                    {/* <h2>Login Now</h2> */}
-                    <select
-                      className="h-[42px] rounded-[5px] border  border-#c5c5c4"
-                      name="role"
-                      value={loginFormData.role}
-                      onChange={handleChangeLogin}
-                      required
-                    >
-                      <option value="" disabled selected>
-                        Select User Type--
-                      </option>
-                      <option value="user">User</option>
-                      <option value="organizer">Organizer</option>
-                    </select>
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      name="email"
-                      value={loginFormData.email}
-                      onChange={handleChangeLogin}
-                      required
-                    />
-                    <input
-                      type="password"
-                      placeholder="password"
-                      name="password"
-                      value={loginFormData.password}
-                      onChange={handleChangeLogin}
-                      required
-                    />
-
-                    {/* <a href="#">Forgot Password?</a> */}
-                    <button type="submit">Login</button>
-
-                    <p className="mt-8">
-                      Don't have an Account?{" "}
-                      <a href="#" onClick={() => setIsLogin()}>
-                        Register now
-                      </a>
-                    </p>
-                  </form>
-                </>
-              ) : (
-                <>
-                  <form className="form  " onSubmit={handleRegister}>
-                    {/* <h2>Registrater Now</h2> */}
-                    <select
-                      className="h-[42px] rounded-[5px] border  border-#c5c5c4"
-                      name="role"
-                      value={formData.role}
-                      onChange={handleChange}
-                      required
-                    >
-                      <option value="" disabled selected>
-                        Select User Type--
-                      </option>
-                      <option value="user" className="text-[#c5c5c4]-200">
-                        User
-                      </option>
-                      <option value="organizer">Organizer</option>
-                    </select>
-                    <br></br>
-                    <input
-                      type="name"
-                      placeholder="Username "
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                    />
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                    />
-                    <input
-                      type="password"
-                      placeholder="password"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleChange}
-                      required
-                    />
-
-                    <button type="submit">Register</button>
-
-                    <p className="mt-8">
-                      Already have an Account?{" "}
-                      <a href="#" onClick={() => setIsLogin(true)}>
-                        Login now
-                      </a>
-                    </p>
-                  </form>
-                </>
-              )}
+      <div className="container">
+        <div className=" w-[550px] h-[650px] borde bg-[#7aad92]  flex justify-center items-center "></div>
+        <div className=" w-[550px] h-[650px] bg-[#dddfde] flex justify-center items-center ">
+          <div className="form-container shadow-2xl  ">
+            <div className="form-toggle">
+              <button
+                className={isLogin ? "active" : ""}
+                onClick={() => setIsLogin(true)}
+              >
+                Login
+              </button>
+              <button
+                className={!isLogin ? "active" : ""}
+                onClick={() => setIsLogin(false)}
+              >
+                Register
+              </button>
             </div>
+            {isLogin ? (
+              <>
+                <form className="form" onSubmit={handleLogin}>
+                  {/* <h2>Login Now</h2> */}
+                  <select
+                    className="h-[42px] rounded-[5px] border  border-#c5c5c4"
+                    name="role"
+                    value={loginFormData.role}
+                    onChange={handleChangeLogin}
+                    required
+                  >
+                    <option value="" disabled selected>
+                      Select User Type--
+                    </option>
+                    <option value="user">User</option>
+                    <option value="organizer">Organizer</option>
+                  </select>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    value={loginFormData.email}
+                    onChange={handleChangeLogin}
+                    required
+                  />
+                  <input
+                    type="password"
+                    placeholder="password"
+                    name="password"
+                    value={loginFormData.password}
+                    onChange={handleChangeLogin}
+                    required
+                  />
+
+                  {/* <a href="#">Forgot Password?</a> */}
+                  <button type="submit">Login</button>
+
+                  <p className="mt-8">
+                    Don't have an Account?{" "}
+                    <a href="#" onClick={() => setIsLogin()}>
+                      Register now
+                    </a>
+                  </p>
+                </form>
+              </>
+            ) : (
+              <>
+                <form className="form  " onSubmit={handleRegister}>
+                  {/* <h2>Registrater Now</h2> */}
+                  <select
+                    className="h-[42px] rounded-[5px] border  border-#c5c5c4"
+                    name="role"
+                    value={formData.role}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="" disabled selected>
+                      Select User Type--
+                    </option>
+                    <option value="user" className="text-[#c5c5c4]-200">
+                      User
+                    </option>
+                    <option value="organizer">Organizer</option>
+                  </select>
+                  <br></br>
+                  <input
+                    type="name"
+                    placeholder="Username "
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                  <input
+                    type="password"
+                    placeholder="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+
+                  <button type="submit">Register</button>
+
+                  <p className="mt-8">
+                    Already have an Account?{" "}
+                    <a href="#" onClick={() => setIsLogin(true)}>
+                      Login now
+                    </a>
+                  </p>
+                </form>
+              </>
+            )}
           </div>
         </div>
-     
+      </div>
     </>
   );
 }

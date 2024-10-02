@@ -4,6 +4,7 @@ import HeroSection from "./HeroSection";
 import CategorySection from "./CategorySection";
 import CatryCards from "./CatryCards";
 import Services from "./Services";
+import Footer from "./Footer";
 
 const UserHome = () => {
   return (
@@ -24,6 +25,9 @@ const UserHome = () => {
           <Services/>
         </div>
       </div>
+
+
+  <Footer/>
     </>
   );
 };
