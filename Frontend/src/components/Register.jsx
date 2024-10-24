@@ -55,13 +55,18 @@ export default function AuthForm() {
         loginFormData
       );
       const userData = response.data;
+
       console.log(">>", userData);
 
       // Check if the user is an organizer
       if (userData.organizer && userData.organizer.role === "organizer") {
-        navigate("/organizerhome");
+        navigate("/organizerhome", {
+          state: { userId: userData.organizer._id },
+        });
       } else if (userData.user && userData.user.role === "user") {
-        navigate("/userhome");
+        navigate("/userhome", {
+          state: { userId: userData.user._id },
+        });
       } else {
         console.error("Role not found or invalid.");
         alert("Login failed. Please check your credentials.");

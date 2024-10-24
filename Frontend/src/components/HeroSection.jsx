@@ -7,7 +7,7 @@ const heroImages = [
   { id: 4, image: "/assets/engaged.jpg" },
 ];
 
-const HeroSection = () => {
+const HeroSection = ({ userId }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -20,6 +20,7 @@ const HeroSection = () => {
 
   return (
     <div className="w-full h-full flex justify-center items-center">
+
       <div className="w-[70%] h-[90%] rounded-lg flex flex-col justify-center items-center">
         <img
           src={heroImages[currentImageIndex].image}
@@ -37,7 +38,6 @@ const HeroSection = () => {
           ))}
         </div>
       </div>
-      
     </div>
   );
 };

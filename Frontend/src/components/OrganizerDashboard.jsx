@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-const OrganizerDashboard = () => {
+// eslint-disable-next-line react/prop-types
+const OrganizerDashboard = ({ userId }) => {
   return (
     <div className="w-full h-full  ">
       <div className=" flex h-full">
@@ -22,6 +23,7 @@ const OrganizerDashboard = () => {
               />
               <h1 className="text-[#272768] text-[3vh] font-[600] mt-4">
                 mohit Vishwa
+                <div><p>Your User ID is: {userId}</p></div>
               </h1>
             </div>
           </div>
@@ -29,15 +31,19 @@ const OrganizerDashboard = () => {
           <div className="h-1/2  flex flex-col  border-y border-white gap-8 pt-10 pl-4">
             <Link
               to="/add-service"
+              state={{ userId }} // Pass userId here
               className=" hover:text-black  px-4 py-2  w-[290px] text-start] text-start  text-white    bg-[#919191] rounded-2xl"
             >
               Add Serivces
             </Link>
-            <button className=" px-4 py-2  hover:text-black   w-[290px] text-start  text-white bg-[#919191] rounded-2xl">
+            <Link
+            to={`/manage-service?userId=${userId}`}
+            className=" px-4 py-2  hover:text-black   w-[290px] text-start  text-white bg-[#919191] rounded-2xl">
               Manage Services
-            </button>
+            </Link>
 
-            <button className=" px-4 py-2   hover:text-black  w-[290px] text-start  text-white bg-[#919191] rounded-2xl">
+            <button 
+            className=" px-4 py-2   hover:text-black  w-[290px] text-start  text-white bg-[#919191] rounded-2xl">
               Logout
             </button>
           </div>

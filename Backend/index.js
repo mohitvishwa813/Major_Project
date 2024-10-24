@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 const userRoutes = require("./Routes/userSignin.js"); // Import user routes
 const addservice = require("./Routes/allService.js");
+
 // const manage_services = require("./Routes/manage-service.js");
 const cors = require("cors");
 require("dotenv").config();
@@ -28,13 +29,14 @@ mongoose
 app.use("/api/users", userRoutes);
 //for orgainzer to list services
 app.use("/api/organizer", addservice);
-//for user to show data
-app.use("/api/user/", addservice);
-//for show orgainizer listed services
+// //for user to show data
+app.use("/api/data/", addservice);
+// //for show orgainizer listed services
 app.use("/api/show", addservice);
-//for profile
+// //for profile
+// app.use("/api/user", addservice);
+//
 app.use("/api/user", addservice);
-
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
