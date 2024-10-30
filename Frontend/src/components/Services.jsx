@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const [servicesData, setServicesData] = useState([]);
@@ -35,15 +36,24 @@ const Services = () => {
             alt={service.title}
             className="w-full h-[70%] rounded-[1rem] shadow-2xl"
           />
+
           {/* title */}
           <div className="flex justify-between">
             <p className="text-2xl font-[400] mt-4">{service.title}</p>
-            <button className="px-4 py-2 border-2 drop-shadow-lg shadow-inner mt-2 rounded-[1rem]">
+            <Link
+              to={`/postdetails?id=${service._id}`}
+              className="px-4 py-2 border-2 drop-shadow-lg shadow-inner mt-2 rounded-[1rem]"
+            >
               Know more
-            </button>
+            </Link>
           </div>
+
           {/* category */}
-          <p className="text-lg font-[400] mt-4">{service.description}</p>
+          <p className="text-sm font-[400] mt-4">
+            {service.description.split(" ").length > 30
+              ? `${service.description.split(" ").slice(0, 20).join(" ")}...`
+              : service.description}
+          </p>
           {/* price */}
           <p className="text-sm font-[400] mt-4">Rs- {service.price}</p>
         </div>

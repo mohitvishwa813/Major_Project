@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const ManageService = () => {
@@ -8,6 +8,7 @@ const ManageService = () => {
 
   // Use useLocation to access the query parameters
   const location = useLocation();
+  const Id = location.state?.userId;
   const queryParams = new URLSearchParams(location.search);
   const userId = queryParams.get("userId"); // Extract userId from query parameters
 
@@ -45,7 +46,11 @@ const ManageService = () => {
 
   return (
     <div className="min-w-[1400px]">
-      <Link to="/organizerhome" className="w-fit  text-[20px] ">
+      <Link
+        to="/organizerhome"
+        state={{ userId: Id }}
+        className="w-fit  text-[20px] "
+      >
         <h1 className=" text-[20px]  p-10 "> back</h1>
       </Link>
       <div className="flex justify-center items-center">

@@ -167,8 +167,9 @@ router.get("/all-services", async (req, res) => {
 
 //user/organizer profile's
 
-router.get("/profile", authenticateProfile, async (req, res) => {
-  const userId = req.user.userId;
+router.get("/profile", async (req, res) => {
+  // const userId = req.user.userId;
+  const userId = req.query.userId;
   console.log("Profileid --->", userId);
 
   try {
@@ -180,7 +181,7 @@ router.get("/profile", authenticateProfile, async (req, res) => {
       }
       return res
         .status(200)
-        .json({ message: "organizer data fetch successfully", user });
+        .json({ message: " data fetch successfully", user });
     }
     return res
       .status(200)
@@ -191,5 +192,48 @@ router.get("/profile", authenticateProfile, async (req, res) => {
       .json({ message: "Server error", error: error.message });
   }
 });
+// post details
+// Route to get post details by ID using URL parameters
+// router.get("/postdetails/:id", async (req, res) => {
+//   try {
+//     const id = req.query.id; // Extracting id from request parameters
 
+//     const service = await AddService.findById(id);
+
+//     // Check if service exists
+//     if (!service) {
+//       return res.status(404).send({ message: "Service not found" });
+//     }
+
+//     return res.status(200).json(service); // Return the found service
+//   } catch (error) {
+//     console.error("Error fetching post details:", error);
+//     return res.status(500).send({ message: "Server error" });
+//   }
+// });
+router.get("/postdetails", async (req, res) => {
+  try {
+    // Retrieve the ID from the query string
+    const id = req.query.id;
+
+    // Check if ID is provided
+    if (!id) {
+      return res.status(400).send({ message: "ID is required" });
+    }
+
+    // Find the service by ID
+    const service = await AddService.findById(id);
+
+    // Check if service exists
+    if (!service) {
+      return res.status(404).send({ message: "Service not found" });
+    }
+
+    // Return the found service
+    return res.status(200).json(service);
+  } catch (error) {
+    console.error("Error fetching post details:", error);
+    return res.status(500).send({ message: "Server error" });
+  }
+});
 module.exports = router;

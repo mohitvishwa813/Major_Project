@@ -54,7 +54,11 @@ const Add = () => {
 
   return (
     <>
-      <Link to="/organizerhome" className="w-fit  text-[20px] ">
+      <Link
+        to="/organizerhome"
+        state={{ userId: Id }}
+        className="w-fit  text-[20px] "
+      >
         <h1 className=" text-[20px]  pt-2  pl-14"> back</h1>
       </Link>
       <div className="container  px-6  flex flex-col justify-center gap-y-5 w-[1400px] -mt-5">

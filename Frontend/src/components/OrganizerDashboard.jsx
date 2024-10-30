@@ -23,7 +23,9 @@ const OrganizerDashboard = ({ userId }) => {
               />
               <h1 className="text-[#272768] text-[3vh] font-[600] mt-4">
                 mohit Vishwa
-                <div><p>Your User ID is: {userId}</p></div>
+                <div>
+                  <p>Your User ID is: {userId}</p>
+                </div>
               </h1>
             </div>
           </div>
@@ -37,13 +39,14 @@ const OrganizerDashboard = ({ userId }) => {
               Add Serivces
             </Link>
             <Link
-            to={`/manage-service?userId=${userId}`}
-            className=" px-4 py-2  hover:text-black   w-[290px] text-start  text-white bg-[#919191] rounded-2xl">
+              to={`/manage-service?userId=${userId}`}
+              state={{ userId }}
+              className=" px-4 py-2  hover:text-black   w-[290px] text-start  text-white bg-[#919191] rounded-2xl"
+            >
               Manage Services
             </Link>
 
-            <button 
-            className=" px-4 py-2   hover:text-black  w-[290px] text-start  text-white bg-[#919191] rounded-2xl">
+            <button className=" px-4 py-2   hover:text-black  w-[290px] text-start  text-white bg-[#919191] rounded-2xl">
               Logout
             </button>
           </div>

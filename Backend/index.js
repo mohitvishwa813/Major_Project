@@ -34,9 +34,11 @@ app.use("/api/data/", addservice);
 // //for show orgainizer listed services
 app.use("/api/show", addservice);
 // //for profile
-// app.use("/api/user", addservice);
+app.use("/api/data", addservice);
 //
 app.use("/api/user", addservice);
+// post details
+app.use("/d",addservice)
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

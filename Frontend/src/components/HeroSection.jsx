@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 const heroImages = [
   { id: 1, image: "/assets/birthday1.jfif" },
   { id: 2, image: "/assets/ring.jpg" },
@@ -17,10 +17,10 @@ const HeroSection = ({ userId }) => {
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
-
+  console.log(userId);
   return (
     <div className="w-full h-full flex justify-center items-center">
-
+      {/* {userId} */}
       <div className="w-[70%] h-[90%] rounded-lg flex flex-col justify-center items-center">
         <img
           src={heroImages[currentImageIndex].image}
@@ -41,5 +41,8 @@ const HeroSection = ({ userId }) => {
     </div>
   );
 };
-
+// PropTypes validation for Navbar component
+HeroSection.propTypes = {
+  userId: PropTypes.string.isRequired, // Validate that userId is a required string
+};
 export default HeroSection;
