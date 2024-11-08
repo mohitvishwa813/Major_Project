@@ -1,7 +1,34 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const OrganizerDashboard = ({ userId }) => {
+  const [userData, setUserData] = useState(null);
+  const Id = userId; // Replace with actual user ID or get it dynamically
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/data/profile?userId=${Id}`
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      console.log(data);
+      setUserData(data); // Assuming the API returns an object with user data
+    } catch (error) {
+      console.error("Failed to fetch user data:", error);
+    }
+  };
+
+  useEffect(() => {
+    console.log("OrganizerDashboard component rendered");
+    console.log("userId:", userId);
+    console.log("userData:", userData);
+    fetchUserData();
+    console.log(userData);
+  }, [Id]); // Dependency array includes Id to refetch if it changes
+
   return (
     <div className="w-full h-full  ">
       <div className=" flex h-full">
@@ -14,17 +41,18 @@ const OrganizerDashboard = ({ userId }) => {
           //   backgroundSize: "cover",
           // }}
         >
-          <div className="w-full h-1/3  border-b border-black flex justify-center flex-col items-center ">
+          <div className="w-full h-1/3  border-b border-black flex justify-center flex-col items-center  pl-7">
             <div>
               <img
-                src="/assets/dp.jfif"
+                src="/assets/boy.png"
                 alt=""
                 className="w-[8vw] h-[16vh] rounded-[50%]   border border-white"
               />
               <h1 className="text-[#272768] text-[3vh] font-[600] mt-4">
-                mohit Vishwa
+                {/* {userData.user.name} */}
+
                 <div>
-                  <p>Your User ID is: {userId}</p>
+                  <p className="text-[12px]">Uuid: {userId}</p>
                 </div>
               </h1>
             </div>
@@ -46,9 +74,12 @@ const OrganizerDashboard = ({ userId }) => {
               Manage Services
             </Link>
 
-            <button className=" px-4 py-2   hover:text-black  w-[290px] text-start  text-white bg-[#919191] rounded-2xl">
+            <Link
+              to="/"
+              className=" px-4 py-2   hover:text-black  w-[290px] text-start  text-white bg-[#919191] rounded-2xl"
+            >
               Logout
-            </button>
+            </Link>
           </div>
 
           <div className="flex justify-center w-full pt-10">

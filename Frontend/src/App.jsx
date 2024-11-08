@@ -10,6 +10,7 @@ import ManageService from "./components/ManageService";
 import Add from "./components/Add";
 import UserProfile from "./components/UserProfile";
 import Postdetails from "./components/Postdetails";
+import ServiceCategory from "./components/ServiceCategory";
 
 // import ServiceDetails from "./components/ServiceDetails";
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/organizerhome" element={<OrganizerHome />} />
         <Route path="/manage-service" element={<ManageService />} />
         <Route path="/postdetails" element={<Postdetails />} />
+        <Route path="/service-category" element={<ServiceCategory />} />{" "}
         {/* <Route path="/services/:id" component={<ServiceDetails/>} />  */}
         {/* <Route path="/services/" component={<ServiceDetails />} /> */}
       </Routes>

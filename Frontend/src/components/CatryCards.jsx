@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CatryCards = () => {
   return (
@@ -12,14 +13,19 @@ const CatryCards = () => {
           />
         </div>
         <div className="w-[41%] h-[330px] rounded-[1rem]">
+        <Link
+          to="/service-category?category=Wedding"
+          className="w-[32%] h-[330px] rounded-[1rem]"
+        >
           <img
             src="/assets/ring.jpg"
             alt=""
             className="w-[100%] h-full  rounded-[1rem]"
           />
+               </Link>
         </div>
       </div>
-      <div className="flex w-full h-full justify-between  rounded-[1rem] mt-4">
+      {/* <div className="flex w-full h-full justify-between  rounded-[1rem] mt-4">
         <div className="w-[32%] h-[330px]  rounded-[1rem]">
           <img
             src="/assets/birthday1.jfif"
@@ -41,6 +47,38 @@ const CatryCards = () => {
             className="w-[100%] h-full  rounded-[1rem]"
           />
         </div>
+      </div> */}
+      <div className="flex w-full h-full justify-between rounded-[1rem] mt-4">
+        <Link
+          to="/service-category?category=Birthday"
+          className="w-[32%] h-[330px] rounded-[1rem]"
+        >
+          <img
+            src="/assets/birthday1.jfif"
+            alt="Birthday"
+            className="w-[100%] h-full rounded-[1rem]"
+          />
+        </Link>
+        <Link
+          to="/service-category?category=Love"
+          className="w-[32%] h-[330px] border"
+        >
+          <img
+            src="/assets/love.jfif"
+            alt="Love"
+            className="w-[100%] h-full rounded-[1rem]"
+          />
+        </Link>
+        <Link
+          to="/service-category?category=Engagement"
+          className="w-[32%] h-[330px] border"
+        >
+          <img
+            src="/assets/engaged.jpg"
+            alt="Engagement"
+            className="w-[100%] h-full rounded-[1rem]"
+          />
+        </Link>
       </div>
     </div>
     //   { id: 1, image: "/assets/birthday1.jfif" },

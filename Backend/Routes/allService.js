@@ -236,4 +236,29 @@ router.get("/postdetails", async (req, res) => {
     return res.status(500).send({ message: "Server error" });
   }
 });
+router.get("/postcategory", async (req, res) => {
+  try {
+    // Retrieve the category from the query string
+    const category = req.query.category;
+
+    // Check if category is provided
+    if (!category) {
+      return res.status(400).send({ message: "Category is required" });
+    }
+
+    // Find services by category
+    const services = await AddService.find({ category: category }); // Assuming 'category' is a string in your DB
+
+    // Check if any services are found
+    if (services.length === 0) {
+      return res.status(404).send({ message: "No services found for this category" });
+    }
+
+    // Return the found services
+    return res.status(200).json(services);
+  } catch (error) {
+    console.error("Error fetching post details:", error);
+    return res.status(500).send({ message: "Server error" });
+  }
+});
 module.exports = router;

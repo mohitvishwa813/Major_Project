@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 const Navbar = ({ userId }) => {
   const [isCardVisible, setCardVisible] = useState(false);
   const [userData, setUserData] = useState(null);
@@ -89,9 +90,12 @@ const Navbar = ({ userId }) => {
                     </dd>
                   </div>
                   {/* Logout Button */}
-                  <button className="mt-2 px-6 w-[100px] py-2 border-2 border-black rounded-2xl  pl-5">
+                  <Link
+                    to="/"
+                    className="mt-2 px-6 w-[100px] py-2 border-2 border-black rounded-2xl  pl-5"
+                  >
                     Logout
-                  </button>
+                  </Link>
                 </dl>
               </div>
             </div>
