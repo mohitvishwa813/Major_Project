@@ -4,7 +4,18 @@ import { Link } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
 const OrganizerDashboard = ({ userId }) => {
   const [userData, setUserData] = useState(null);
+  const [isCardVisible, setCardVisible] = useState(false);
+
   const Id = userId; // Replace with actual user ID or get it dynamically
+  const toggleCardVisibility = () => {
+    setCardVisible(!isCardVisible);
+
+    // Fetch user data when the card is made visible
+    if (!isCardVisible) {
+      fetchUserData();
+    }
+  };
+
   const fetchUserData = async () => {
     try {
       const response = await fetch(
@@ -59,24 +70,80 @@ const OrganizerDashboard = ({ userId }) => {
           </div>
 
           <div className="h-1/2  flex flex-col  border-y border-white gap-8 pt-10 pl-4">
+            <button
+              className="hover:text-[#dbf3ff]  px-4 py-2  w-[290px] text-start] text-start  text-white     bg-[#292525] rounded-2xl"
+              onClick={toggleCardVisibility}
+            >
+              Profile
+            </button>
+            {isCardVisible && (
+              <div className="absolute top-[10rem] left-[3rem] w-[800px] min-h-[400px] h-auto bg-[#8b8b8b] shadow-lg rounded-lg p-4 z-50">
+                <button
+                  onClick={toggleCardVisibility}
+                  className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2"
+                >
+                  X
+                </button>
+                <div className="bg-white overflow-hidden shadow rounded-lg border">
+                  <div className="px-4 py-5 sm:px-6">
+                    <h3 className="text-lg leading-6 font-medium text-gray-900">
+                      Profile
+                    </h3>
+                    {userData ? (
+                      <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                        {/* Displaying fetched user data */}
+                        Name: {userData.user.name}
+                        <br />
+                        Email: {userData.user.email}
+                      </p>
+                    ) : (
+                      <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                        Loading...
+                      </p>
+                    )}
+                  </div>
+                  <div className="border-t border-gray-200 px-4 py-5 sm:p-0 mb-14">
+                    <dl className="sm:divide-y sm:divide-gray-200 flex justify-center flex-col items-start  pl-5">
+                      {/* Additional fields can be added here */}
+                      <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:pr-6">
+                        <dt className="text-sm font-medium text-gray-500">
+                          User ID :
+                        </dt>
+                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                          {userId}
+                        </dd>
+                      </div>
+                      {/* Logout Button */}
+                    </dl>
+                  </div>
+                </div>
+              </div>
+            )}
             <Link
               to="/add-service"
               state={{ userId }} // Pass userId here
-              className=" hover:text-black  px-4 py-2  w-[290px] text-start] text-start  text-white    bg-[#919191] rounded-2xl"
+              className=" hover:text-[#dbf3ff]  px-4 py-2  w-[290px] text-start] text-start  text-white     bg-[#292525] rounded-2xl"
             >
               Add Serivces
             </Link>
             <Link
               to={`/manage-service?userId=${userId}`}
               state={{ userId }}
-              className=" px-4 py-2  hover:text-black   w-[290px] text-start  text-white bg-[#919191] rounded-2xl"
+              className=" px-4 py-2  hover:text-[#dbf3ff]    w-[290px] text-start  text-white  bg-[#292525]  rounded-2xl"
             >
               Manage Services
+            </Link>
+            <Link
+              to={`/manage-service?userId=${userId}`}
+              state={{ userId }}
+              className=" px-4 py-2  hover:text-[#dbf3ff]    w-[290px] text-start  text-white  bg-[#292525] rounded-2xl"
+            >
+              Booking
             </Link>
 
             <Link
               to="/"
-              className=" px-4 py-2   hover:text-black  w-[290px] text-start  text-white bg-[#919191] rounded-2xl"
+              className=" px-4 py-2   hover:text-[#dbf3ff]   w-[290px] text-start  text-white  bg-[#292525]  rounded-2xl"
             >
               Logout
             </Link>
@@ -89,7 +156,7 @@ const OrganizerDashboard = ({ userId }) => {
           </div>
         </div>
         {/* right div */}
-        <div className="w-[75%] mt-14   h-[92%]   bg-[#ebebeb] flex justify-center flex-col rounded-[2rem]  border border-black ">
+        <div className="w-[75%] mt-14   h-[92%]   bg-[#ebebeb] flex justify-center flex-col rounded-[2rem]  border border-[#d7d7d7] ">
           <div className="w-[90%] h-[20%]   bg-[#ffffff] rounded-[2rem] mx-[5%] mb-2">
             <div className="flex justify-between px-20 pt-10 ">
               <div className="flex gap-5">
@@ -113,8 +180,8 @@ const OrganizerDashboard = ({ userId }) => {
             </div>
           </div>
           <div className="w-full h-[70%] border">
-            <div className="flex w-full border border-black rounded-t-[2rem] bg-white">
-              <h1 className="w-1/2 flex justify-center py-4 border-black border-r-2 text-xl text-[#000000]">
+            <div className="flex w-full border border-[#d7d7d7] rounded-t-[2rem] bg-white">
+              <h1 className="w-1/2 flex justify-center py-4 border-[#d7d7d7] border-r-2 text-xl text-[#000000]">
                 Chats
               </h1>
               <h1 className="w-1/2 flex justify-center text-xl py-4 text-[#000000]">
