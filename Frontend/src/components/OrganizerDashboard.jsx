@@ -5,7 +5,17 @@ import { Link } from "react-router-dom";
 const OrganizerDashboard = ({ userId }) => {
   const [userData, setUserData] = useState(null);
   const [isCardVisible, setCardVisible] = useState(false);
+  //for bank details
+  const [showCard, setShowCard] = useState(false); // Changed variable name
+  const [fullName, setFullName] = useState("");
+  const [number, setNumber] = useState("");
+  const [upiId, setUpiId] = useState("");
 
+  const handleSave = () => {
+    // Logic to save bank details
+    console.log({ fullName, number, upiId });
+    setShowCard(false); // Close the card after saving
+  };
   const Id = userId; // Replace with actual user ID or get it dynamically
   const toggleCardVisibility = () => {
     setCardVisible(!isCardVisible);
@@ -140,19 +150,69 @@ const OrganizerDashboard = ({ userId }) => {
             >
               Booking
             </Link>
+            <div>
+              <button
+                onClick={() => setShowCard(true)} // Updated to new variable name
+                className="px-4 py-2 hover:text-[#dbf3ff] w-[290px] text-start text-white bg-[#292525] rounded-2xl"
+              >
+               Bank Details
+              </button>
 
-            <Link
+              {showCard && ( // Updated to new variable name
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                  <div className="bg-white w-[500px] h-[400px] p-4 rounded-lg shadow-lg">
+                    <h2 className="text-xl mb-4">Bank Details</h2>
+                    <input
+                      type="text"
+                      placeholder="Full Name"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      className="w-full mb-2 p-2 border border-gray-300 rounded"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Number"
+                      value={number}
+                      onChange={(e) => setNumber(e.target.value)}
+                      className="w-full mb-2 p-2 border border-gray-300 rounded"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Merchant UPI ID"
+                      value={upiId}
+                      onChange={(e) => setUpiId(e.target.value)}
+                      className="w-full mb-4 p-2 border border-gray-300 rounded"
+                    />
+                    <div className="flex justify-between">
+                      <button
+                        onClick={handleSave}
+                        className="bg-blue-500 text-white px-4 py-2 rounded"
+                      >
+                        Save
+                      </button>
+                      <button
+                        onClick={() => setShowCard(false)}
+                        className="bg-red-500 text-white px-4 py-2 rounded"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+            {/* <Link
               to="/"
               className=" px-4 py-2   hover:text-[#dbf3ff]   w-[290px] text-start  text-white  bg-[#292525]  rounded-2xl"
             >
-              Logout
-            </Link>
+              Bank Details
+            </Link> */}
           </div>
 
           <div className="flex justify-center w-full pt-10">
-            <button className=" hover:text-red-600  px-4 py-2  w-[290px] text-center  text-white bg-[#824141] rounded-2xl ">
-              Delete Account
-            </button>
+            <Link to='/' className=" hover:text-red-600  px-4 py-2  w-[290px] text-center border border-black    rounded-[4rem] ">
+              Logout
+            </Link>
           </div>
         </div>
         {/* right div */}

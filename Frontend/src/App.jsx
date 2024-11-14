@@ -11,7 +11,21 @@ import Add from "./components/Add";
 import UserProfile from "./components/UserProfile";
 import Postdetails from "./components/Postdetails";
 import ServiceCategory from "./components/ServiceCategory";
+function Success() {
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <h1 className="text-2xl font-bold text-green-500">Payment Successful!</h1>
+    </div>
+  );
+}
 
+function Failure() {
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <h1 className="text-2xl font-bold text-red-500">Payment Failed!</h1>
+    </div>
+  );
+}
 // import ServiceDetails from "./components/ServiceDetails";
 function App() {
   return (
@@ -28,6 +42,8 @@ function App() {
         <Route path="/manage-service" element={<ManageService />} />
         <Route path="/postdetails" element={<Postdetails />} />
         <Route path="/service-category" element={<ServiceCategory />} />{" "}
+        <Route path="/payment-success" element={<Success />} />
+        <Route path="/payment-failure" element={<Failure />} />
         {/* <Route path="/services/:id" component={<ServiceDetails/>} />  */}
         {/* <Route path="/services/" component={<ServiceDetails />} /> */}
       </Routes>

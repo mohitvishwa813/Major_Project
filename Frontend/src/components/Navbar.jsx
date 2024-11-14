@@ -33,14 +33,18 @@ const Navbar = ({ userId }) => {
 
   return (
     <div className="flex justify-between items-center border-b-2 mt-[1.4rem] w-full">
-      <div className="w-[120px] h-[50px] bg-cover">EventFinder</div>
-      <div className="w-[120px] h-[50px] bg-cover mb-[2rem] mr-[20rem] rounded-[1.6rem]">
+      <div className="w-[50vw]">   <div className="w-[120px] h-[50px] bg-cover ">EventFinder</div></div>
+   
+      {/* <div className="w-[120px] h-[50px] bg-cover mb-[2rem] mr-[20rem] rounded-[1.6rem]">
         <input
           type="text"
           className="w-[450px] border-2 px-8 py-4 rounded-[1.6rem] shadow-lg"
           placeholder="search here..."
         />
-      </div>
+      </div> */}
+      <div className="w-[120px] h-[50px] bg-cover drop-shadow-xl">Chats</div>
+      <div className="w-[120px] h-[50px] bg-cover drop-shadow-xl">Booking</div>
+      <div className="w-[120px] h-[50px] bg-cover drop-shadow-xl">Address</div>
       <div className="relative">
         <button
           className="w-[45px] h-[20px] bg-cover mb-[2rem]"

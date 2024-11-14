@@ -296,7 +296,8 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { FaCommentAlt, FaPhoneAlt } from "react-icons/fa";
 import Modal from "react-modal";
-import Qrcode from "./Qrcode";
+// import Qrcode from "./Qrcode";
+import Checkout from "./Checkout";
 
 const Postdetails = () => {
   const location = useLocation();
@@ -307,7 +308,7 @@ const Postdetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isQrCodeModalOpen, setIsQrCodeModalOpen] = useState(false); // QR code modal state
+  // const [isQrCodeModalOpen, setIsQrCodeModalOpen] = useState(false); // QR code modal state
   const [selectedDate, setSelectedDate] = useState(null);
   const [bookedDates, setBookedDates] = useState(generateRandomBookedDates());
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -363,7 +364,7 @@ const Postdetails = () => {
       setBookedDates((prev) => [...prev, selectedDate]);
     }
     setIsModalOpen(false);
-    setIsQrCodeModalOpen(true); // Open QR code modal on confirm
+    // setIsQrCodeModalOpen(true); // Open QR code modal on confirm
     setSelectedDate(null);
   };
 
@@ -372,9 +373,9 @@ const Postdetails = () => {
     setSelectedDate(null);
   };
 
-  const handleCloseQrCodeModal = () => {
-    setIsQrCodeModalOpen(false);
-  };
+  // const handleCloseQrCodeModal = () => {
+  //   setIsQrCodeModalOpen(false);
+  // };
 
   const goToPreviousMonth = () => {
     setCurrentMonth(
@@ -483,9 +484,9 @@ const Postdetails = () => {
             <div className="mt-4">
               <button
                 onClick={handleConfirmBooking}
-                className="bg-orange-500 text-white p-2 rounded"
+                className="bg-orange-500 text-white p-2 rounded h-fit w-fit"
               >
-                Pay Now
+                <Checkout price={service.price} title={service.title} />
               </button>
             </div>
           )}
@@ -499,7 +500,7 @@ const Postdetails = () => {
         </Modal>
 
         {/* QR Code Modal */}
-        <Modal
+        {/* <Modal
           isOpen={isQrCodeModalOpen}
           onRequestClose={handleCloseQrCodeModal}
           style={{
@@ -513,19 +514,13 @@ const Postdetails = () => {
             },
           }}
         >
-          <h2>Scan to Pay</h2>
-          <Qrcode
-            upiId="organizer-upi-id@upi"
-            price={service.price}
-            title={service.title}
-          />
           <button
             onClick={handleCloseQrCodeModal}
             className="mt-4 bg-gray-500 text-white p-2 rounded"
           >
             Close
           </button>
-        </Modal>
+        </Modal> */}
       </div>
     </div>
   );

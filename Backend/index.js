@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const userRoutes = require("./Routes/userSignin.js"); // Import user routes
 const addservice = require("./Routes/allService.js");
 const otpsend = require("./Routes/otpsend.js"); // Import the otpSend module
-
+const paymentRoutes = require("./Routes/payment.js");
 // const manage_services = require("./Routes/manage-service.js");
 const cors = require("cors");
 require("dotenv").config();
@@ -45,6 +45,7 @@ app.use("/c", addservice);
 
 //otp
 app.use("/api/otp", otpsend);
+app.use("/api/payment", paymentRoutes); // Use payment routes
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
