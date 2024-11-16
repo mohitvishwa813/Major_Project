@@ -343,9 +343,9 @@ const Add = () => {
                 Select a category
               </option>
               <option value="Birthday">Birthday</option>
-              <option value="Love Proposal">Love Proposal</option>
+              <option value="Love_Proposal">Love Proposal</option>
               <option value="Wedding">Wedding</option>
-              <option value="At Your Place">At Your Place</option>
+              <option value="At_Your_Place">At Your Place</option>
               <option value="Engagement">Engagement</option>
             </select>
           </div>

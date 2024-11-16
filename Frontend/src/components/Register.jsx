@@ -375,8 +375,23 @@ export default function AuthForm() {
   };
 
   return (
-    <div className="container">
-      <div className="w-[550px] h-[650px] bg-[#dddfde] flex justify-center items-center">
+    <div className="container  flex ">
+      <div className="w-[550px] h-[650px]  flex justify-center items-center relative">
+        <video
+          style={{ opacity: 0.5 }}
+          className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+          autoPlay
+          loop
+          muted
+        >
+          <source
+            src="https://videos.pexels.com/video-files/3129671/3129671-sd_640_360_30fps.mp4"
+            type="video/mp4"
+          />
+          {/* <source src="your-video-source.webm" type="video/webm" /> */}
+          Your browser does not support the video tag.
+        </video>
+
         <div className="form-container shadow-2xl">
           <div className="form-toggle">
             <button
@@ -496,6 +511,13 @@ export default function AuthForm() {
             </form>
           )}
         </div>
+      </div>
+      <div className="w-[550px] h-[650px] ">
+        <img
+          src="https://images.pexels.com/photos/1164985/pexels-photo-1164985.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt=""
+          className="w-full h-full "
+        />
       </div>
     </div>
   );

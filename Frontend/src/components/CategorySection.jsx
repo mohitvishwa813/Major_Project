@@ -52,12 +52,12 @@ const CategorySection = () => {
     {
       icon: "/assets/love-lock.png",
       label: "Love Proposal",
-      path: "/service-category?category=love",
+      path: "/service-category?category=Love_Proposal",
     },
     {
       icon: "/assets/wedding-rings.png",
       label: "Engagement",
-      path: "/service-category?category=engagement",
+      path: "/service-category?category=Engagement",
     },
     {
       icon: "/assets/wedding.png",
@@ -67,7 +67,7 @@ const CategorySection = () => {
     {
       icon: "/assets/home-sweet-home.png",
       label: "At Your Place",
-      path: "/service-category?category=home",
+      path: "/service-category?category=At_Your_Place",
     },
   ];
 

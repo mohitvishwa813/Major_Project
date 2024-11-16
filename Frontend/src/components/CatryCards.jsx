@@ -13,16 +13,16 @@ const CatryCards = () => {
           />
         </div>
         <div className="w-[41%] h-[330px] rounded-[1rem]">
-        <Link
-          to="/service-category?category=Wedding"
-          className="w-[32%] h-[330px] rounded-[1rem]"
-        >
-          <img
-            src="/assets/ring.jpg"
-            alt=""
-            className="w-[100%] h-full  rounded-[1rem]"
-          />
-               </Link>
+          <Link
+            to="/service-category?category=Wedding"
+            className="w-[32%] h-[330px] rounded-[1rem]"
+          >
+            <img
+              src="https://th.bing.com/th/id/OIP.qmYnzsNFIxuMxpc2ws-oUQHaE9?w=342&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+              alt=""
+              className="w-[100%] h-full  rounded-[1rem]"
+            />
+          </Link>
         </div>
       </div>
       {/* <div className="flex w-full h-full justify-between  rounded-[1rem] mt-4">
@@ -60,11 +60,11 @@ const CatryCards = () => {
           />
         </Link>
         <Link
-          to="/service-category?category=Love"
+          to="/service-category?category=Love_Proposal"
           className="w-[32%] h-[330px] border"
         >
           <img
-            src="/assets/love.jfif"
+            src="https://images.pexels.com/photos/4618539/pexels-photo-4618539.jpeg?auto=compress&cs=tinysrgb&w=600"
             alt="Love"
             className="w-[100%] h-full rounded-[1rem]"
           />
@@ -74,7 +74,7 @@ const CatryCards = () => {
           className="w-[32%] h-[330px] border"
         >
           <img
-            src="/assets/engaged.jpg"
+            src="https://images.pexels.com/photos/837254/pexels-photo-837254.jpeg?auto=compress&cs=tinysrgb&w=600"
             alt="Engagement"
             className="w-[100%] h-full rounded-[1rem]"
           />

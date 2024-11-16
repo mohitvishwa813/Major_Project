@@ -139,17 +139,17 @@ const heroImages = [
     id: 1,
     images: [
       "/assets/birthday1.jfif",
-      "/assets/ring.jpg",
-      "/assets/love.jfif",
-      "/assets/engaged.jpg",
+      "/assets/b4.jfif",
+      "/assets/b2.jpg",
+      "/assets/b1.jpg",
     ],
     path: "/service-category?category=Birthday", // Added path for the first card
   },
   {
     id: 2,
     images: [
-      "/assets/birthday1.jfif",
-      "/assets/ring.jpg",
+      "https://media.istockphoto.com/id/895859916/photo/man-open-a-ring-box-to-give-a-gift-to-his-girlfriend.jpg?s=612x612&w=0&k=20&c=Vd3cpMx1zjCLhv-Tj6v18rAnds_EAkgiKRBLhzc9joY=",
+      "https://media.istockphoto.com/id/1346376055/photo/wedding-arch-with-glowing-garland-and-table-are-in-garden-among-lawn.jpg?s=612x612&w=0&k=20&c=V6KWZtpkP7tDsQL54D-6Hy6TRc8PKIFrdhkfK4dArrw=",
       "/assets/love.jfif",
       "/assets/engaged.jpg",
     ],
@@ -158,10 +158,10 @@ const heroImages = [
   {
     id: 3,
     images: [
-      "/assets/birthday1.jfif",
-      "/assets/ring.jpg",
-      "/assets/love.jfif",
-      "/assets/engaged.jpg",
+      "https://media.istockphoto.com/id/1129868078/photo/wedding-couple-stage.jpg?b=1&s=612x612&w=0&k=20&c=LM5ghTzkAlKM9VSeEyFXSddn68Ip7kl4EydVr3MTItY=",
+      "/assets/s2.jfif",
+      "/assets/s3.jfif",
+      "https://media.istockphoto.com/id/1177485677/photo/table-setting-for-an-event-party-or-wedding-reception.jpg?b=1&s=612x612&w=0&k=20&c=M56SXW_ADtNlSJDcaFOLI5EIqOBRvPZwOJCyHX8Vqnc=",
     ],
     path: "/service-category?category=Wedding", // Added path for the third card
   },

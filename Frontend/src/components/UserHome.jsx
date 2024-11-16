@@ -22,7 +22,7 @@ const UserHome = () => {
           <CategorySection />
           <CatryCards/>
           <div  className=" mx-auto w-[90%] flex  h-fit mt-12 justify-center text-[40px] ">
-            <p className="drop-shadow-md">  Our Services</p>
+            <p className="drop-shadow-md">  Our Events</p>
           </div>
           <Services/>
         </div>
