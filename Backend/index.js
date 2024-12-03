@@ -13,9 +13,12 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173", // Update this with your frontend URL in production
-    methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
-    credentials: true, // Allow credentials if needed
+    origin: [
+      "http://localhost:5173", // Allow requests from this origin
+      "https://major-project-e9qcuxyf9-mohits-projects-5de47686.vercel.app", // Allow requests from your deployed frontend
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed methods
+    credentials: true, // Allow credentials (if needed)
   })
 );
 // Connect to MongoDBtele
