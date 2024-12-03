@@ -19,6 +19,7 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed methods
   })
 );
+app.options("*", cors());
 // Connect to MongoDBtele
 // const uri = "mongodb://127.0.0.1:27017/Major";
 const uri =
