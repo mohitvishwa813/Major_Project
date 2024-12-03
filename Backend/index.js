@@ -11,7 +11,13 @@ require("dotenv").config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Update this with your frontend URL in production
+    methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
+    credentials: true, // Allow credentials if needed
+  })
+);
 // Connect to MongoDBtele
 // const uri = "mongodb://127.0.0.1:27017/Major";
 const uri =
