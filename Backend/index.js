@@ -15,10 +15,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173", // Allow requests from this origin
-      "https://major-project-e9qcuxyf9-mohits-projects-5de47686.vercel.app", // Allow requests from your deployed frontend
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed methods
-    credentials: true, // Allow credentials (if needed)
   })
 );
 // Connect to MongoDBtele
