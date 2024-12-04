@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 const ServiceDetails = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
-  const id = query.get('id'); // Extracting the ID from the query parameters
+  const id = query.get("id"); // Extracting the ID from the query parameters
 
   const [service, setService] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -19,7 +19,9 @@ const ServiceDetails = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:3000/postdetails?id=${id}`); // Adjust the URL as necessary
+        const response = await fetch(
+          `https://major-project9144.onrender.com/postdetails?id=${id}`
+        ); // Adjust the URL as necessary
         if (!response.ok) {
           throw new Error("Failed to fetch service details");
         }

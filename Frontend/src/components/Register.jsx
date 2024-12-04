@@ -268,7 +268,8 @@ export default function AuthForm() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/otp/send",
+        // "http://localhost:3000/api/otp/send",
+        "https://major-project9144.onrender.com/api/otp/send",
         { email: formData.email } // Send only the email
       );
       alert(response.data.message);
@@ -299,7 +300,8 @@ export default function AuthForm() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/otp/verify",
+        // "http://localhost:3000/api/otp/verify",
+        "https://major-project9144.onrender.com/api/otp/verify",
         { email: formData.email, otp } // Send email and OTP for verification
       );
       alert(response.data.message);
@@ -318,7 +320,8 @@ export default function AuthForm() {
     console.log(formData);
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/users/register",
+        // "http://localhost:3000/api/users/register",
+        "https://major-project9144.onrender.com/api/users/register",
         formData
       );
       console.log(response.data);
@@ -346,7 +349,9 @@ export default function AuthForm() {
     console.log(loginFormData);
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/users/login",
+        // "http://localhost:3000/api/users/login",
+        "https://major-project9144.onrender.com/api/users/login",
+
         loginFormData
       );
       const userData = response.data;

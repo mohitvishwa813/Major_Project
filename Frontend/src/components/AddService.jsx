@@ -31,7 +31,7 @@ export const AddService = () => {
     console.log(formData);
     console.log(Id);
     try {
-      const response = await axios.post("http://localhost:3000/api/user/add", {
+      const response = await axios.post("https://major-project9144.onrender.com/api/user/add", {
         ...formData,
       });
       console.log(">>", response.data);

@@ -17,7 +17,7 @@ const ManageService = () => {
       try {
         // Make API call to fetch services
         const response = await fetch(
-          `http://localhost:3000/api/user/manage-service?userId=${userId}`
+          `https://major-project9144.onrender.com/api/user/manage-service?userId=${userId}`
         );
 
         if (!response.ok) {
@@ -82,7 +82,14 @@ const ManageService = () => {
                     <h2 className="text-[20px] font-semibold">
                       {service.title}
                     </h2>
-                    <p className="text-[16px]">{service.description}</p>
+                    <p className="text-[16px]">
+                      {service.description.split(" ").length > 30
+                        ? service.description
+                            .split(" ")
+                            .slice(0, 30)
+                            .join(" ") + "..."
+                        : service.description}
+                    </p>
                   </div>
                   {/* price */}
                   <div className="w-[30%]   flex justify-center items-center">

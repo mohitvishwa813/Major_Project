@@ -217,9 +217,12 @@ const Add = () => {
     console.log(formData);
     console.log(Id);
     try {
-      const response = await axios.post("http://localhost:3000/api/user/add", {
-        ...formData,
-      });
+      const response = await axios.post(
+        "https://major-project9144.onrender.com/api/user/add",
+        {
+          ...formData,
+        }
+      );
       console.log(">>", response.data);
       alert("Service added successfully!");
       // Reset form or redirect as needed

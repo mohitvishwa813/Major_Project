@@ -74,7 +74,13 @@ const Services = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/data/all-services"
+          "https://major-project9144.onrender.com/api/data/all-services",
+          {
+            method: "GET", // Make sure to set the correct HTTP method
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
         );
         const data = await response.json();
 
@@ -124,7 +130,7 @@ const Services = () => {
               ? `${service.description.split(" ").slice(0, 20).join(" ")}...`
               : service.description}
           </p>
-          
+
           {/* price */}
           <p className="text-sm font-[400] mt-4">Rs- {service.price}</p>
         </div>

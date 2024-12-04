@@ -323,7 +323,7 @@ const Postdetails = () => {
 
       try {
         const response = await fetch(
-          `http://localhost:3000/d/postdetails?id=${id}`
+          `https://major-project9144.onrender.com/d/postdetails?id=${id}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch service details");

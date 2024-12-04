@@ -10,7 +10,7 @@ const Checkout = ({ title, price }) => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/payment/create-order",
+        "https://major-project9144.onrender.com/api/payment/create-order",
         data
       );
       console.log(response.data);

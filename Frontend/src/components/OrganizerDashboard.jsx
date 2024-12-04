@@ -29,7 +29,7 @@ const OrganizerDashboard = ({ userId }) => {
   const fetchUserData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/data/profile?userId=${Id}`
+        `https://major-project9144.onrender.com/api/data/profile?userId=${Id}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -155,7 +155,7 @@ const OrganizerDashboard = ({ userId }) => {
                 onClick={() => setShowCard(true)} // Updated to new variable name
                 className="px-4 py-2 hover:text-[#dbf3ff] w-[290px] text-start text-white bg-[#292525] rounded-2xl"
               >
-               Bank Details
+                Bank Details
               </button>
 
               {showCard && ( // Updated to new variable name
@@ -210,7 +210,10 @@ const OrganizerDashboard = ({ userId }) => {
           </div>
 
           <div className="flex justify-center w-full pt-10">
-            <Link to='/' className=" hover:text-red-600  px-4 py-2  w-[290px] text-center border border-black    rounded-[4rem] ">
+            <Link
+              to="/"
+              className=" hover:text-red-600  px-4 py-2  w-[290px] text-center border border-black    rounded-[4rem] "
+            >
               Logout
             </Link>
           </div>

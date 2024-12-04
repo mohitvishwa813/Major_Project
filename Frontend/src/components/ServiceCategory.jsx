@@ -24,7 +24,7 @@ const ServiceCategory = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:3000/c/postcategory?category=${category}`
+          `https://major-project9144.onrender.com/c/postcategory?category=${category}`
         );
         setServices(response.data); // Set the fetched services to state
       } catch (err) {

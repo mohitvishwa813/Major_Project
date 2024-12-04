@@ -18,7 +18,10 @@ const Navbar = ({ userId }) => {
   const fetchUserData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/data/profile?userId=${Id}`
+        // major-project9144.onrender.com
+
+        // `http://localhost:3000/api/data/profile?userId=${Id}`
+        `https://major-project9144.onrender.com/api/data/profile?userId=${Id}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -33,8 +36,11 @@ const Navbar = ({ userId }) => {
 
   return (
     <div className="flex justify-between items-center border-b-2 mt-[1.4rem] w-full">
-      <div className="w-[50vw]">   <div className="w-[120px] h-[50px] bg-cover ">EventFinder</div></div>
-   
+      <div className="w-[50vw]">
+        {" "}
+        <div className="w-[120px] h-[50px] bg-cover ">EventFinder</div>
+      </div>
+
       {/* <div className="w-[120px] h-[50px] bg-cover mb-[2rem] mr-[20rem] rounded-[1.6rem]">
         <input
           type="text"
