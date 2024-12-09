@@ -14,9 +14,10 @@ app.use(express.json());
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", // Allow requests from this origin
+      "http://localhost:5173",
+      "https://flourishing-brigadeiros-f7f124.netlify.app",
     ],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed methods
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
 app.options("*", cors());
