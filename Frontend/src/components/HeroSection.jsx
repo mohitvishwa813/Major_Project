@@ -131,6 +131,8 @@
 
 // export default HeroSection;
 import { useEffect, useState } from "react";
+import { Search } from "lucide-react";
+
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
@@ -144,6 +146,7 @@ const heroImages = [
       "/assets/b1.jpg",
     ],
     path: "/service-category?category=Birthday", // Added path for the first card
+    eventname: "Birthday",
   },
   {
     id: 2,
@@ -154,6 +157,7 @@ const heroImages = [
       "/assets/engaged.jpg",
     ],
     path: "/service-category?category=Engagement", // Added path for the second card
+    eventname: "Engagement",
   },
   {
     id: 3,
@@ -164,12 +168,13 @@ const heroImages = [
       "https://media.istockphoto.com/id/1177485677/photo/table-setting-for-an-event-party-or-wedding-reception.jpg?b=1&s=612x612&w=0&k=20&c=M56SXW_ADtNlSJDcaFOLI5EIqOBRvPZwOJCyHX8Vqnc=",
     ],
     path: "/service-category?category=Wedding", // Added path for the third card
+    eventname: "Wedding",
   },
 ];
 
 const HeroSection = ({ userId }) => {
   const [currentImageIndices, setCurrentImageIndices] = useState([0, 0, 0]);
-
+  const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndices((prevIndices) =>
@@ -183,33 +188,94 @@ const HeroSection = ({ userId }) => {
   console.log(userId);
 
   return (
-    <div className="flex justify-center items-center space-x-10 w-[1500px]">
-      {heroImages.map((slider, sliderIndex) => (
-        <Link
-          to={slider.path}
-          key={slider.id}
-          className="w-[350px] h-[400px] rounded-lg overflow-hidden relative"
-        >
-          <img
-            src={slider.images[currentImageIndices[sliderIndex]]}
-            alt={`Slider ${sliderIndex + 1}`}
-            className="rounded-lg w-full h-full object-cover transition-opacity duration-500"
-          />
-          <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center mt-2 gap-2">
-            {slider.images.map((_, index) => (
-              <h1
-                key={index}
-                className={`w-[12px] h-[12px] border border-black rounded-full ${
-                  currentImageIndices[sliderIndex] === index
-                    ? "bg-black"
-                    : "bg-transparent"
-                }`}
-              ></h1>
-            ))}
+    <>
+      <div className="">
+        <div className="min-h-screen relative flex items-center justify-center px-4">
+          {/* Background Image with Overlay */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: 'url("/assets/nh.jpg")',
+            }}
+          >
+            {/* Dark overlay for better text readability */}
+            <div className="absolute inset-0 bg-black/50"></div>
           </div>
-        </Link>
-      ))}
-    </div>
+
+          {/* Content */}
+          <div className="relative text-center text-white max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              Your One-Stop Solution for Memorable Events!
+            </h1>
+
+            <p className="text-xl md:text-2xl mb-12 text-gray-200">
+              Find and book the perfect event services for your special
+              occasions
+            </p>
+
+            {/* Search Bar */}
+            <div className="max-w-2xl mx-auto">
+              <div className="flex md:flex-row flex-col gap-2">
+                <div className="flex-1 relative">
+                  <input
+                    type="text"
+                    placeholder="Search for services..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full px-6 py-4 rounded-lg bg-white/90 backdrop-blur-sm 
+                text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 
+                focus:ring-blue-500"
+                  />
+                  <Search className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                </div>
+
+                <button
+                  className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white 
+              font-semibold rounded-lg transition-colors duration-200 w-fit"
+                >
+                  Find Service Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-full mx-auto text-center pt-14 flex justify-center items-center k">
+        <h1 className="w-fit   text-[5vh]">Featured Events</h1>
+      </div>
+      <div className="flex w-full overflow-x-scroll md:justify-center md:px-0 px-10">
+        <div className="flex space-x-4 md:space-x-10 py-8 md:py-32">
+          {heroImages.map((slider, sliderIndex) => (
+            <Link
+              to={slider.path}
+              key={slider.id}
+              className="w-[250px] md:w-[450px] h-[300px] md:h-[400px] flex-shrink-0 rounded-lg overflow-hidden relative snap-center border"
+            >
+              <p className="z-30 absolute top-3 left-4 px-3 py-1 bg-white rounded-md bg-opacity-40 text-sm md:text-base">
+                {slider.eventname}
+              </p>
+              <img
+                src={slider.images[currentImageIndices[sliderIndex]]}
+                alt={`Slider ${sliderIndex + 1}`}
+                className="rounded-lg w-full h-full object-cover transition-opacity duration-500"
+              />
+              <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center mt-2 gap-2 pb-2">
+                {slider.images.map((_, index) => (
+                  <h1
+                    key={index}
+                    className={`w-[10px] h-[10px] md:w-[12px] md:h-[12px] border border-black rounded-full ${
+                      currentImageIndices[sliderIndex] === index
+                        ? "bg-black"
+                        : "bg-transparent"
+                    }`}
+                  ></h1>
+                ))}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 

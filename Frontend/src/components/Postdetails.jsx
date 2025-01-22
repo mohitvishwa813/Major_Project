@@ -298,6 +298,9 @@ import { FaCommentAlt, FaPhoneAlt } from "react-icons/fa";
 import Modal from "react-modal";
 // import Qrcode from "./Qrcode";
 import Checkout from "./Checkout";
+import Navbar from "./Navbar";
+import StayUpdated from "./StayUpdated";
+import Footer from "./Footer";
 
 const Postdetails = () => {
   const location = useLocation();
@@ -400,107 +403,113 @@ const Postdetails = () => {
   if (!service) return <div>Service not found</div>;
 
   return (
-    <div className="w-[1400px]">
-      <div className="container mx-auto mt-10 flex justify-center px-[10%] flex-col gap-y-3">
-        <div className="bg-white shadow-lg rounded-lg p-6 min-w-[900px] w-full flex flex-col">
-          <img
-            src={service.image}
-            alt={service.title}
-            className="w-full h-[400px] rounded-lg mt-4"
-          />
-          <h1 className="text-3xl font-bold">{service.title}</h1>
-          <p className="mt-4">{service.description}</p>
-          <p className="mt-4">Price: Rs {service.price}</p>
-          <p className="mt-4">Category: {service.category}</p>
-          <p className="mt-4">Location: {service.location}</p>
-        </div>
-
-        <div className="flex space-x-4 mt-6 w-full mb-20">
-          <button
-            onClick={handleBookNowClick}
-            className="flex items-center bg-purple-500 text-white rounded-lg p-2 hover:bg-purple-600 transition"
-          >
-            Book Now
-          </button>
-          <button className="flex items-center bg-blue-500 text-white rounded-lg p-2 hover:bg-blue-600 transition">
-            <FaCommentAlt className="mr-2" /> Chat
-          </button>
-          <button className="flex items-center bg-green-500 text-white rounded-lg p-2 hover:bg-green-600 transition">
-            <FaPhoneAlt className="mr-2" /> Call
-          </button>
-        </div>
-
-        {/* Booking Date Selection Modal */}
-        <Modal
-          isOpen={isModalOpen}
-          onRequestClose={handleCloseModal}
-          style={{
-            content: {
-              maxWidth: "700px",
-              margin: "auto",
-              padding: "20px",
-            },
-            overlay: {
-              backgroundColor: "rgba(0,0,0,0.75)",
-            },
-          }}
-        >
-          <h2>Select a Date</h2>
-
-          <div className="flex justify-between mb-4">
-            <button onClick={goToPreviousMonth}>&lt; Previous</button>
-            <span>
-              {currentMonth.toLocaleString("default", { month: "long" })}{" "}
-              {currentMonth.getFullYear()}
-            </span>
-            <button onClick={goToNextMonth}>Next &gt;</button>
+    <>
+      <Navbar />
+      <div className="bg-[#eaeaea]">
+        <div className="container mx-auto  flex justify-center px-[10%] flex-col gap-y-3">
+          <div className="shadow-lg rounded-lg p-6  w-full flex flex-col">
+            <img
+              src={service.image}
+              alt={service.title}
+              className="w-full h-[400px] rounded-lg mt-4"
+            />
+            <h1 className="text-3xl font-bold">{service.title}</h1>
+            <p className="mt-4">{service.description}</p>
+            <p className="mt-4">Price: Rs {service.price}</p>
+            <p className="mt-4">Category: {service.category}</p>
+            <p className="mt-4">Location: {service.location}</p>
           </div>
 
-          <div className="grid grid-cols-7 gap-4">
-            {[...Array(getDaysInCurrentMonth())].map((_, index) => {
-              const day = index + 1;
-              const isBooked = bookedDates.includes(day);
-              const isSelected = selectedDate === day;
-
-              return (
-                <button
-                  key={day}
-                  onClick={() => handleDateSelect(day)}
-                  className={`w-full h-[50px] ${
-                    isBooked
-                      ? "bg-red-500"
-                      : isSelected
-                      ? "bg-yellow-500"
-                      : "bg-green-500"
-                  } text-white rounded`}
-                >
-                  {day}
-                </button>
-              );
-            })}
+          <div className="flex space-x-4 mt-6 w-full mb-20">
+            <button
+              onClick={handleBookNowClick}
+              className="flex items-center bg-purple-500 text-white rounded-lg p-2 hover:bg-purple-600 transition"
+            >
+              Book Now
+            </button>
+            <button className="flex items-center bg-blue-500 text-white rounded-lg p-2 hover:bg-blue-600 transition">
+              <FaCommentAlt className="mr-2" /> Chat
+            </button>
+            <button className="flex items-center bg-green-500 text-white rounded-lg p-2 hover:bg-green-600 transition">
+              <FaPhoneAlt className="mr-2" /> Call
+            </button>
           </div>
 
-          {selectedDate && (
-            <div className="mt-4">
+          {/* Booking Date Selection Modal */}
+          <div className="flex justify-center items-center">
+            <Modal
+              isOpen={isModalOpen}
+              onRequestClose={handleCloseModal}
+              style={{
+                content: {
+                  maxWidth: "700px",
+                  margin: "auto",
+                  padding: "20px",
+                  maxHeight: "600px",
+                },
+                overlay: {
+                  backgroundColor: "rgba(0,0,0,0.75)",
+                },
+              }}
+            >
+              <h2>Select a Date</h2>
+
+              <div className="flex justify-between mb-4">
+                <button onClick={goToPreviousMonth}>&lt; Previous</button>
+                <span>
+                  {currentMonth.toLocaleString("default", { month: "long" })}{" "}
+                  {currentMonth.getFullYear()}
+                </span>
+                <button onClick={goToNextMonth}>Next &gt;</button>
+              </div>
+
+              <div className="grid grid-cols-7 gap-4">
+                {[...Array(getDaysInCurrentMonth())].map((_, index) => {
+                  const day = index + 1;
+                  const isBooked = bookedDates.includes(day);
+                  const isSelected = selectedDate === day;
+
+                  return (
+                    <button
+                      key={day}
+                      onClick={() => handleDateSelect(day)}
+                      className={`w-full h-[50px] ${
+                        isBooked
+                          ? "bg-red-500"
+                          : isSelected
+                          ? "bg-yellow-500"
+                          : "bg-green-500"
+                      } text-white rounded`}
+                    >
+                      {day}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {selectedDate && (
+                <div className="mt-4">
+                  <button
+                    onClick={handleConfirmBooking}
+                    className="bg-orange-500 text-white p-2 rounded h-fit w-fit"
+                  >
+                    <Checkout price={service.price} title={service.title} />
+                  </button>
+                </div>
+              )}
+
               <button
-                onClick={handleConfirmBooking}
-                className="bg-orange-500 text-white p-2 rounded h-fit w-fit"
+                onClick={handleCloseModal}
+                className="mt-4 bg-gray-500 text-white p-2 rounded"
               >
-                <Checkout price={service.price} title={service.title} />
+                Close
               </button>
-            </div>
-          )}
+              <div></div>
+            </Modal>
+          </div>
 
-          <button
-            onClick={handleCloseModal}
-            className="mt-4 bg-gray-500 text-white p-2 rounded"
-          >
-            Close
-          </button>
-        </Modal>
-
-        {/* QR Code Modal */}
-        {/* <Modal
+          {/* QR Code Modal */}
+          {/* <Modal
           isOpen={isQrCodeModalOpen}
           onRequestClose={handleCloseQrCodeModal}
           style={{
@@ -521,8 +530,11 @@ const Postdetails = () => {
             Close
           </button>
         </Modal> */}
+        </div>
       </div>
-    </div>
+      <StayUpdated />
+      <Footer />
+    </>
   );
 };
 

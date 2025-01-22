@@ -225,13 +225,12 @@ const Add = () => {
       );
       console.log(">>", response.data);
       alert("Service added successfully!");
-      // Reset form or redirect as needed
       setFormData({
         description: "",
         title: "",
         price: "",
         image: "",
-        category: "", // Reset category to empty string
+        category: "",
         location: "",
         userId: Id,
       });
@@ -250,16 +249,16 @@ const Add = () => {
       >
         <h1 className="text-[20px] pt-2 pl-14">Back</h1>
       </Link>
-      <div className="container px-6 flex flex-col justify-center gap-y-5 w-[1400px] -mt-5x">
-        <div className="w-[800px] flex justify-center ">
+      <div className="container px-6 flex flex-col justify-center gap-y-5  bg-[#eaeaea]  mx-auto py-10">
+        <Link className="w-[80%] max-w-[800px] flex justify-center  mx-auto ">
           <h1 className="text-3xl font-semibold text-center mb-6 ">
             Add Service
           </h1>
-        </div>
+        </Link>
 
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-2xl rounded-lg p-8 w-[800px]"
+          className="bg-white shadow-2xl rounded-lg p-8 w-[80%]  max-w-[800px] mx-auto"
         >
           <div className="mb-4">
             <label

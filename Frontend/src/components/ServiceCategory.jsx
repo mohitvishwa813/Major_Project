@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
+import StayUpdated from "./StayUpdated";
+import Footer from "./Footer";
 
 const ServiceCategory = () => {
   const [services, setServices] = useState([]); // State to hold services
@@ -48,32 +50,33 @@ const ServiceCategory = () => {
 
   return (
     <>
-      {/* <Navbar /> */}
-      <div className="w-[1500px] px-[6%]">
-        <div className="grid grid-cols-3 gap-8 p-4 pt-20 ">
+      <Navbar />
+      <div className=" w-full bg-[#eaeaea]">
+        <div className=" flex flex-wrap gap-5 justify-center py-10">
           {/* <h1 className="text-xl font-bold mb-4">Service Category: {category}</h1> */}
           {services.length > 0 ? (
             services.map((service) => (
               <div
                 key={service._id}
-                className="border rounded-lg shadow-lg w-[400px] h-[430px] overflow-hidden"
+                className="border  rounded-lg shadow-lg w-[300px] md:w-[400px]  md:h-[430px] overflow-hidden"
               >
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-[300px] object-cover"
+                  className="w-full h-[250px] md:h-[300px] object-cover"
                 />
-                <div className="p-4">
+                <div className="p-4 relative">
                   <p className="text-sm text-gray-600">{service.category}</p>
+
                   <h2 className="text-lg font-semibold">{service.title}</h2>
-                  <div className="w-full flex justify-end">
-                    <Link
-                      to={`/postdetails?id=${service._id}`}
-                      className="w-fit px-5 py-2 bg-black text-white rounded-[25px]"
-                    >
-                      Know More
-                    </Link>
-                  </div>
+                </div>
+                <div className="w-full flex justify-end p-4 md:pr-4 ">
+                  <Link
+                    to={`/postdetails?id=${service._id}`}
+                    className="w-fit px-3 text-[1.7vh] py-1 bg-black text-white rounded-[25px]"
+                  >
+                    Know More
+                  </Link>
                 </div>
               </div>
             ))
@@ -82,6 +85,8 @@ const ServiceCategory = () => {
           )}
         </div>
       </div>
+      <StayUpdated />
+      <Footer />
     </>
   );
 };
