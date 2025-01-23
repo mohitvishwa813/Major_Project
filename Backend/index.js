@@ -16,6 +16,9 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://flourishing-brigadeiros-f7f124.netlify.app",
+      "https://major-project-vmp4-4a09eivid-mohits-projects-5de47686.vercel.app/",
+      "https://major-project-vmp4-git-new-frontend-mohits-projects-5de47686.vercel.app/",
+      "https://major-project-vmp4-git-new-frontend-mohits-projects-5de47686.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
