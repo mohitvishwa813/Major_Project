@@ -85,7 +85,7 @@ const Dashboard = () => {
             {
               title: "Active Posts",
               value: stats.totalServices,
-              route: "/admin-panel/promoted-posts",
+              route: "/admin-panel/posts",
             }, // Change route if needed
           ].map((stat, index) => (
             <div

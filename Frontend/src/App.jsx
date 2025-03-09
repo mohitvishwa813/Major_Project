@@ -15,6 +15,7 @@ import Dashboard from "./components/Dashboard";
 import UserList from "./components/UserList";
 import OrganizerList from "./components/OrganizerList";
 import PromotedPostList from "./components/PromotedPostList";
+import TotalPost from "./components/TotalPost";
 function Success() {
   return (
     <div className="flex items-center justify-center h-screen">
@@ -55,6 +56,7 @@ function App() {
           path="/admin-panel/promoted-posts"
           element={<PromotedPostList />}
         />
+        <Route path="/admin-panel/posts" element={<TotalPost />} />
         {/* <Route path="/services/:id" component={<ServiceDetails/>} />  */}
         {/* <Route path="/services/" component={<ServiceDetails />} /> */}
       </Routes>

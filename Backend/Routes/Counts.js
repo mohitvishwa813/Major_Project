@@ -45,6 +45,22 @@ router.get("/total-services", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+router.get("/total-post", async (req, res) => {
+  try {
+    const services = await AddService.find({}, "title category"); // Fetch title & category
+    res.json({ totalServices: services.length, services });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+router.delete("/posts/delete/:id", async (req, res) => {
+  try {
+    await AddService.findByIdAndDelete(req.params.id);
+    res.json({ success: true, message: "Post deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 // 🟢 Get all users with booking count
 router.get("/all-users", async (req, res) => {

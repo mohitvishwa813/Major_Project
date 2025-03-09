@@ -6,6 +6,7 @@ const AddServiceSchema = new mongoose.Schema({
   price: { type: Number },
   image: { type: String },
   category: { type: String },
+  location:{ type: String },
   latitude: { type: Number, required: true }, // Added latitude field
   longitude: { type: Number, required: true }, // Added longitude field
   userId: { type: String },
