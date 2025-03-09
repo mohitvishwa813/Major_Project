@@ -11,6 +11,10 @@ import Add from "./components/Add";
 import UserProfile from "./components/UserProfile";
 import Postdetails from "./components/Postdetails";
 import ServiceCategory from "./components/ServiceCategory";
+import Dashboard from "./components/Dashboard";
+import UserList from "./components/UserList";
+import OrganizerList from "./components/OrganizerList";
+import PromotedPostList from "./components/PromotedPostList";
 function Success() {
   return (
     <div className="flex items-center justify-center h-screen">
@@ -44,6 +48,13 @@ function App() {
         <Route path="/service-category" element={<ServiceCategory />} />{" "}
         <Route path="/payment-success" element={<Success />} />
         <Route path="/payment-failure" element={<Failure />} />
+        <Route path="/admin-panel" element={<Dashboard />} />
+        <Route path="/admin-panel/users" element={<UserList />} />
+        <Route path="/admin-panel/organizers" element={<OrganizerList />} />
+        <Route
+          path="/admin-panel/promoted-posts"
+          element={<PromotedPostList />}
+        />
         {/* <Route path="/services/:id" component={<ServiceDetails/>} />  */}
         {/* <Route path="/services/" component={<ServiceDetails />} /> */}
       </Routes>

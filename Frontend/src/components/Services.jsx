@@ -65,6 +65,7 @@
 // export default Services;
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import DistanceCalculator from "./DistanceCalculator";
 
 const Services = () => {
   const [servicesData, setServicesData] = useState([]);
@@ -83,7 +84,7 @@ const Services = () => {
           }
         );
         const data = await response.json();
-
+        console.log(data);
         // Accessing the services array from the response
         if (data && data.services) {
           setServicesData(data.services); // Set the services array to state
@@ -102,7 +103,7 @@ const Services = () => {
 
   return (
     <>
-      <div className="mx-auto  flex flex-wrap gap-4 px-4 md:px-16">
+      <div className="mx-auto  flex flex-wrap gap-4 px-4 md:px-16  justify-center ">
         {servicesData.slice(0, itemsToShow).map((service) => (
           <div
             className="w-full relative max-w-[450px] min-h-[40vh] border-2 border-gray-200 rounded-[0.4rem] p-8 shadow-2xl "
@@ -128,7 +129,13 @@ const Services = () => {
 
             {/* price */}
             <p className="text-sm font-[400] my-4 ">Rs- {service.price}</p>
-            <div className="flex justify-end items-end absolute bottom-3 right-3">
+            <div className="flex justify-between absolute bottom-3 left-3">
+              <DistanceCalculator
+                eventLat={service.latitude}
+                eventLng={service.longitude}
+              />
+            </div>
+            <div className="flex justify-between absolute bottom-3 right-3">
               <Link
                 to={`/postdetails?id=${service._id}`}
                 className="px-4 py-2 border-2 drop-shadow-lg bg-[#e249dd] text-white  rounded-[1rem] w-fit"

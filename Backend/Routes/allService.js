@@ -46,8 +46,16 @@ const authenticateProfile = (req, res, next) => {
 
 // add
 router.post("/add", async (req, res) => {
-  const { image, title, description, price, category, location, userId } =
-    req.body;
+  const {
+    image,
+    title,
+    description,
+    price,
+    category,
+    latitude,
+    longitude,
+    userId,
+  } = req.body;
 
   try {
     const addNewService = new AddService({
@@ -56,7 +64,8 @@ router.post("/add", async (req, res) => {
       description,
       price,
       category,
-      location,
+      latitude,
+      longitude,
       userId,
     });
     const result = await addNewService.save();
@@ -251,7 +260,9 @@ router.get("/postcategory", async (req, res) => {
 
     // Check if any services are found
     if (services.length === 0) {
-      return res.status(404).send({ message: "No services found for this category" });
+      return res
+        .status(404)
+        .send({ message: "No services found for this category" });
     }
 
     // Return the found services

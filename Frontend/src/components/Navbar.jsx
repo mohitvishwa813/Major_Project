@@ -6,6 +6,9 @@ import { Menu, X } from "lucide-react";
 const Navbar = ({ userId }) => {
   const [isCardVisible, setCardVisible] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [isMobileEventsOpen, setIsMobileEventsOpen] = useState(false);
+  const [showChatTooltip, setShowChatTooltip] = useState(false);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const Id = userId;
 
@@ -38,9 +41,9 @@ const Navbar = ({ userId }) => {
 
   return (
     <div className="relative">
-      <div className="flex justify-between items-center border-b-2 w-full px-4 md:px-[10vh] py-3">
+      <div className="flex justify-between items-center border-b-2 w-full px-4 md:px-[10vh] py-3 z-50 fixed bg-white">
         {/* Logo */}
-        <a href="/userhome" className="w-full md:w-[50vw]">
+        <a href="/userhome" className="w-full md:w-[40vw] ">
           <div className="min-w-[120px]  text-[#a32697] text-[3svh]">
             EventFinder
           </div>
@@ -54,10 +57,51 @@ const Navbar = ({ userId }) => {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-4">
-          <div className="w-[120px]  bg-cover drop-shadow-xl text-[2.2vh]">
-            Chats
+        <div className="hidden md:flex items-center space-x-4 ">
+          {/* Featured Events Dropdown */}
+          <div className="relative group  pr-12">
+            <button className="text-[2.2vh]">Featured Events</button>
+            <div className="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 p-2 w-[300px]">
+              <Link
+                to="/service-category?category=Birthday"
+                className="block px-4 py-2 hover:bg-gray-200 transition duration-200 rounded-md"
+              >
+                Birthday
+              </Link>
+              <Link
+                to="/service-category?category=Wedding"
+                className="block px-4 py-2 hover:bg-gray-200 transition duration-200 rounded-md"
+              >
+                Wedding
+              </Link>
+              <Link
+                to="/service-category?category=Engagement"
+                className="block px-4 py-2 hover:bg-gray-200 transition duration-200 rounded-md"
+              >
+                Engagement
+              </Link>
+              <Link
+                to="/service-category?category=Love_Proposal"
+                className="block px-4 py-2 hover:bg-gray-200 transition duration-200 rounded-md"
+              >
+                Love Proposal
+              </Link>
+              <Link
+                to="/service-category?category=At_Your_Place"
+                className="block px-4 py-2 hover:bg-gray-200 transition duration-200 rounded-md"
+              >
+                At Your Place
+              </Link>
+            </div>
           </div>
+          {/* Chats with Hover Effect */}
+          <div className="relative group pr-12">
+            <div className="text-[2.2vh] cursor-pointer">Chats</div>
+            <span className="absolute left-0 top-full hidden group-hover:block bg-black text-white text-xs px-2 py-1 rounded-md mt-1 w-[170px]">
+              This feature is coming soon
+            </span>
+          </div>
+
           <div className="w-[120px]  bg-cover drop-shadow-xl text-[2.2vh]">
             Booking
           </div>
@@ -141,13 +185,68 @@ const Navbar = ({ userId }) => {
                   Profile
                 </button>
               </div>
-              <div className="w-full text-left py-2 border-b border-black">
-                Chats
+
+              {/* Chats (Click to Show Message) */}
+              <div className="w-full text-left py-2 border-b border-black relative">
+                <button onClick={() => setShowChatTooltip(!showChatTooltip)}>
+                  Chats
+                </button>
+                {showChatTooltip && (
+                  <span className="absolute left-0 top-full bg-black text-white text-xs px-2 py-1 rounded-md mt-1">
+                    This feature is coming soon
+                  </span>
+                )}
               </div>
               <div className="w-full text-left py-2 border-b border-black">
                 Booking
               </div>
-              <div className="w-full text-left py-2 ">Address</div>
+              <div className="w-full text-left py-2 border-b border-black ">
+                Address
+              </div>
+              <div className="w-full">
+                <button
+                  onClick={() => setIsMobileEventsOpen(!isMobileEventsOpen)}
+                  className="w-full text-left py-2 border-b border-black flex justify-between items-center"
+                >
+                  Featured Events
+                  <span>{isMobileEventsOpen ? "▲" : "▼"}</span>
+                </button>
+
+                {isMobileEventsOpen && (
+                  <div className="flex flex-col bg-gray-100 p-2 rounded-md">
+                    <Link
+                      to="/service-category?category=Birthday"
+                      className="block px-4 py-2 hover:bg-gray-200 transition duration-200 rounded-md"
+                    >
+                      Birthday
+                    </Link>
+                    <Link
+                      to="/service-category?category=Wedding"
+                      className="block px-4 py-2 hover:bg-gray-200 transition duration-200 rounded-md"
+                    >
+                      Wedding
+                    </Link>
+                    <Link
+                      to="/service-category?category=Engagement"
+                      className="block px-4 py-2 hover:bg-gray-200 transition duration-200 rounded-md"
+                    >
+                      Engagement
+                    </Link>
+                    <Link
+                      to="/service-category?category=Love_Proposal"
+                      className="block px-4 py-2 hover:bg-gray-200 transition duration-200 rounded-md"
+                    >
+                      Love Proposal
+                    </Link>
+                    <Link
+                      to="/service-category?category=At_Your_Place"
+                      className="block px-4 py-2 hover:bg-gray-200 transition duration-200 rounded-md"
+                    >
+                      At Your Place
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}
