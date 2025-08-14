@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 
-const AddService = require("../Models/Addservice.js");
+const AddService = require("../Models/AddService.js");
 const User = require("../Models/User.js");
 const Organizer = require("../Models/EventOrganizer.js"); // Ensure this is imported
 //authenticateOrganizerJWT for   organizers ,,,,,,,to add-service ,,manage-service,
