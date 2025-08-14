@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../Models/User");
 const Organizer = require("../Models/EventOrganizer");
-const AddService = require("../Models/AddService");
+const AddService = require("../Models/addService");
 
 // Get total number of users
 router.get("/total-users", async (req, res) => {
